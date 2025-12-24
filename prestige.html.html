@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПРЕСТИЖ | Жидкие обои премиум-класса</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === ОСНОВНЫЕ СТИЛИ === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark-black: #000000;
+            --gold: #d4af37;
+            --light-gold: #f4e8c1;
+            --red: #a52a2a;
+            --dark-red: #8b0000;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--gold);
+        }
+
+        /* === ШАПКА === */
+        .header {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        /* === СТИЛИ ДЛЯ ЛОГОТИПА В ШАПКЕ === */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px; /* ⚠️ ИЗМЕНИТЕ ЭТУ ВЫСОТУ ПОД ВАШ ЛОГОТИП */
+            width: auto;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-list li {
+            margin: 0 15px;
+        }
+
+        .nav-list a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-list a:hover {
+            color: var(--gold);
+        }
+
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        .btn-consultation {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-consultation:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* === ПЕРВЫЙ ЭКРАН === */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1615529182904-14819c35db37?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-hero {
+            background: linear-gradient(135deg, var(--red) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(165, 42, 42, 0.3);
+        }
+
+        /* === О ПРОДУКТЕ === */
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--black);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--dark-gray);
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon {
+            background-color: var(--black);
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .feature-text h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--black);
+        }
+
+        .feature-text p {
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 0;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .image-frame {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-placeholder {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-placeholder i {
+            font-size: 60px;
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+        }
+
+        /* === ПРЕИМУЩЕСТВА === */
+        .benefits {
+            background-color: var(--light-gray);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon.gold {
+            background-color: var(--black);
+            color: var(--gold);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+
+        .benefit-card p {
+            color: var(--dark-gray);
+            font-size: 15px;
+        }
+
+        /* === КАТАЛОГ === */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .color-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-sample {
+            height: 150px;
+            width: 100%;
+        }
+
+        .color-card h3 {
+            padding: 20px 20px 5px;
+            font-size: 18px;
+            color: var(--black);
+        }
+
+        .color-card p {
+            padding: 0 20px 20px;
+            color: var(--dark-gray);
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--black);
+            border: 2px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        /* === ГАЛЕРЕЯ === */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-placeholder {
+            text-align: center;
+            color: var(--dark-gray);
+            padding: 20px;
+        }
+
+        .img-placeholder i {
+            font-size: 50px;
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+        }
+
+        /* === ФОРМА ЗАЯВКИ === */
+        .cta {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+        }
+
+        .cta-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cta-subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .cta-form {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 30px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group select {
+            color: rgba(255, 255, 255, 0.7);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+        }
+
+        .form-group select option {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-agreement {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .form-agreement input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .form-agreement label {
+            font-size: 14px;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        /* === ФУТЕР === */
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-description {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .footer-contacts {
+            list-style: none;
+        }
+
+        .footer-contacts li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .footer-contacts i {
+            color: var(--gold);
+            margin-right: 10px;
+            margin-top: 3px;
+            min-width: 20px;
+        }
+
+        .footer-menu {
+            list-style: none;
+        }
+
+        .footer-menu li {
+            margin-bottom: 12px;
+        }
+
+        .footer-menu a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-menu a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* === СТИЛИ ДЛЯ ЛОГОТИПА В ФУТЕРЕ === */
+        .footer-logo-img {
+            height: 40px; /* ⚠️ ИЗМЕНИТЕ ЭТУ ВЫСОТУ ПОД ВАШ ЛОГОТИП */
+            width: auto;
+            margin-bottom: 15px;
+        }
+
+        /* === АДАПТИВНОСТЬ === */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                width: 100%;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--black);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-list li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .btn-consultation span {
+                display: none;
+            }
+            
+            .btn-consultation {
+                padding: 12px;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                justify-content: center;
+            }
+            
+            .hero {
+                margin-top: 70px;
+                min-height: 600px;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            .footer-logo-img {
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                min-width: 100%;
+            }
+            
+            .cta-title {
+                font-size: 26px;
+            }
+            
+            .logo-img {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- === ШАПКА САЙТА === -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- 🎯 МЕСТО ДЛЯ ВАШЕГО ЛОГОТИПА (ШАПКА) -->
+                <!-- ⚠️ ЗАМЕНИТЕ "logo.png" НА ПУТЬ К ВАШЕМУ ФАЙЛУ -->
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="ПРЕСТИЖ жидкие обои" class="logo-img">
+                </a>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#about">О продукте</a></li>
+                        <li><a href="#catalog">Каталог</a></li>
+                        <li><a href="#benefits">Преимущества</a></li>
+                        <li><a href="#gallery">Проекты</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="btn-consultation">
+                    <i class="fas fa-phone-alt"></i> Получить консультацию
+                </button>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- === ПЕРВЫЙ ЭКРАН === -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Идеальные стены с жидкими обоями <span class="highlight">ПРЕСТИЖ</span></h1>
+                <p class="hero-subtitle">Элитное покрытие для безупречных интерьеров. Натуральные компоненты, эксклюзивные текстуры, премиум-качество.</p>
+                <button class="btn-hero">
+                    <i class="fas fa-palette"></i> Подобрать цвет
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- === О ПРОДУКТЕ === -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">О продукте</h2>
+            <p class="section-subtitle">Исключительное качество и инновационная технология</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p><strong>Жидкие обои ПРЕСТИЖ</strong> — это элитный отделочный материал, созданный по инновационной технологии на основе натуральных компонентов.</p>
+                    <p>В состав входят отборные целлюлозные и шелковые волокна, минеральные наполнители и экологичные связующие. Это позволяет создавать бесшовное, дышащее покрытие с уникальной текстурой.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Натуральные компоненты</h3>
+                                <p>Только экологически чистые материалы</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Инновационная технология</h3>
+                                <p>Патентованная формула производства</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h3>Премиум-качество</h3>
+                                <p>Соответствие высочайшим стандартам</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Изображение текстуры жидких обоев</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ПРЕИМУЩЕСТВА === -->
+    <section id="benefits" class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Преимущества</h2>
+            <p class="section-subtitle">Почему выбирают ПРЕСТИЖ</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon gold">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Долговечность</h3>
+                    <p>Срок службы более 15 лет без потери внешнего вида. Устойчивость к выцветанию и износу.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon gold">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Гипоаллергенность</h3>
+                    <p>Безопасность для здоровья. Не выделяет вредных веществ, рекомендовано для детских комнат.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon gold">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3>Бесшовное покрытие</h3>
+                    <p>Идеально ровная поверхность без стыков и швов. Возможность нанесения на сложные формы.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon gold">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Ремонтопригодность</h3>
+                    <p>Локальный ремонт без переклейки всей стены. Легко восстановить поврежденный участок.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === КАТАЛОГ === -->
+    <section id="catalog" class="section catalog">
+        <div class="container">
+            <h2 class="section-title">Каталог текстур</h2>
+            <p class="section-subtitle">Эксклюзивная палитра цветов и текстур</p>
+            
+            <div class="catalog-grid">
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #f5f2e9 0%, #e8e2d1 100%);"></div>
+                    <h3>Венецианская штукатурка</h3>
+                    <p>Эффект мрамора с золотыми прожилками</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #e8d4b3 0%, #d4b98c 100%);"></div>
+                    <h3>Шелковый путь</h3>
+                    <p>Нежная шелковая текстура с переливами</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #d9d1c7 0%, #c5bcb0 100%);"></div>
+                    <h3>Лён</h3>
+                    <p>Натуральная текстура льняного полотна</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #b89c7d 0%, #a08568 100%);"></div>
+                    <h3>Золотой песок</h3>
+                    <p>Теплый песочный оттенок с блестками</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #a52a2a 0%, #8b0000 100%);"></div>
+                    <h3>Бордо</h3>
+                    <p>Благородный красный с шелковым блеском</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);"></div>
+                    <h3>Черный жемчуг</h3>
+                    <p>Глубокий черный с перламутровым сиянием</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);"></div>
+                    <h3>Золото Сахары</h3>
+                    <p>Роскошный золотой с текстурой песка</p>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-sample" style="background: linear-gradient(135deg, #800000 0%, #660000 100%);"></div>
+                    <h3>Рубин</h3>
+                    <p>Насыщенный красный с бархатной текстурой</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn-secondary">
+                    <i class="fas fa-book-open"></i> Смотреть весь каталог
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ГАЛЕРЕЯ === -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">Реализованные проекты</h2>
+            <p class="section-subtitle">Жидкие обои ПРЕСТИЖ в интерьерах</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img">
+                        <div class="img-placeholder">
+                            <i class="fas fa-home"></i>
+                            <p>Гостиная в классическом стиле</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img">
+                        <div class="img-placeholder">
+                            <i class="fas fa-bed"></i>
+                            <p>Спальня с текстурой "Шелковый путь"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img">
+                        <div class="img-placeholder">
+                            <i class="fas fa-building"></i>
+                            <p>Офисный интерьер премиум-класса</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img">
+                        <div class="img-placeholder">
+                            <i class="fas fa-utensils"></i>
+                            <p>Кухня-гостиная в современном стиле</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img">
+                        <div class="img-placeholder">
+                            <i class="fas fa-child"></i>
+                            <p>Детская комната с экологичным покрытием</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img">
+                        <div class="img-placeholder">
+                            <i class="fas fa-hotel"></i>
+                            <p>Лобби отеля с текстурой "Венецианская штукатурка"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ФОРМА ЗАЯВКИ === -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Рассчитайте стоимость для вашей комнаты</h2>
+                <p class="cta-subtitle">Оставьте заявку и получите персональный расчет от нашего специалиста</p>
+                
+                <form class="cta-form" id="request-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" placeholder="Телефон" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" placeholder="Email">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Площадь помещения, м²">
+                        </div>
+                        
+                        <div class="form-group">
+                            <select>
+                                <option value="" disabled selected>Тип помещения</option>
+                                <option value="living">Гостиная</option>
+                                <option value="bedroom">Спальня</option>
+                                <option value="kitchen">Кухня</option>
+                                <option value="office">Офис</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-calculator"></i> Рассчитать стоимость
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-agreement">
+                        <input type="checkbox" id="agreement" checked>
+                        <label for="agreement">Согласен на обработку персональных данных</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ФУТЕР === -->
+    <footer id="contacts" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <!-- 🎯 МЕСТО ДЛЯ ВАШЕГО ЛОГОТИПА (ФУТЕР) -->
+                    <!-- ⚠️ ЗАМЕНИТЕ "logo.png" НА ПУТЬ К ВАШЕМУ ФАЙЛУ -->
+                    <a href="#" class="footer-logo">
+                        <img src="logo.png" alt="ПРЕСТИЖ жидкие обои" class="footer-logo-img">
+                    </a>
+                    <p class="footer-description">Производитель элитных жидких обоев премиум-класса. Натуральные материалы, эксклюзивные текстуры, безупречное качество.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="footer-contacts">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, ул. Престижная, 15</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@prestige-wall.ru</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Пн-Пт: 9:00-19:00, Сб: 10:00-17:00</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Меню</h3>
+                    <ul class="footer-menu">
+                        <li><a href="#about">О продукте</a></li>
+                        <li><a href="#catalog">Каталог</a></li>
+                        <li><a href="#benefits">Преимущества</a></li>
+                        <li><a href="#gallery">Проекты</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ПРЕСТИЖ. Жидкие обои премиум-класса. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('.nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Закрываем мобильное меню
+                    nav.classList.remove('active');
+                }
+            });
+        });
+        
+        // Обработка формы
+        const ctaForm = document.querySelector('.cta-form');
+        ctaForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за вашу заявку! Наш специалист свяжется с вами в течение 30 минут.');
+            this.reset();
+        });
+        
+        // Обработка кнопок консультации
+        const consultationBtns = document.querySelectorAll('.btn-consultation, .btn-hero');
+        consultationBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.cta').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Фиксация шапки при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
